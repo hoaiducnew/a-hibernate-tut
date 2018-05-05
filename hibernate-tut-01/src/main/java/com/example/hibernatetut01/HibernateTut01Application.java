@@ -40,6 +40,6 @@ public class HibernateTut01Application implements CommandLineRunner {
 		Course course = courseRepository.findById(10001L);
 		logger.info("Course 10001 -> {}", course);
 		
-		courseRepository.deleteById(10001L);
+//		courseRepository.deleteById(10001L);
 	}
 }
