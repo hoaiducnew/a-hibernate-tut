@@ -12,7 +12,7 @@ import com.example.hibernatetut01.entity.Person;
 
 @Repository
 @Transactional
-public class PersonJpaRepository {
+public class PersonRepository {
 
 	@PersistenceContext
 	EntityManager entityManager;

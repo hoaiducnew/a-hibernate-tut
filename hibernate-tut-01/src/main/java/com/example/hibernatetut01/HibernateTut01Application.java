@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.hibernatetut01.entity.Course;
 import com.example.hibernatetut01.entity.Person;
 import com.example.hibernatetut01.jpa.CourseRepository;
-import com.example.hibernatetut01.jpa.PersonJpaRepository;
+import com.example.hibernatetut01.jpa.PersonRepository;
 
 @SpringBootApplication
 public class HibernateTut01Application implements CommandLineRunner {
@@ -20,7 +20,7 @@ public class HibernateTut01Application implements CommandLineRunner {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	PersonJpaRepository repository;
+	PersonRepository personRepository;
 
 	@Autowired
 	private CourseRepository courseRepository;
@@ -31,11 +31,11 @@ public class HibernateTut01Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("User id 10001 -> {}", repository.findById(10001));
-		repository.deleteById(10002);
-		logger.info("Inserting 10004 -> {}", repository.insert(new Person("Tara", "Berlin", new Date())));
-		logger.info("Updating 10003 -> {}", repository.update(new Person(10003, "Pieter", "Utrecht", new Date())));
-		logger.info("All users -> {}", repository.findAll());
+		logger.info("User id 10001 -> {}", personRepository.findById(10001));
+		personRepository.deleteById(10002);
+		logger.info("Inserting 10004 -> {}", personRepository.insert(new Person("Tara", "Berlin", new Date())));
+		logger.info("Updating 10003 -> {}", personRepository.update(new Person(10003, "Pieter", "Utrecht", new Date())));
+		logger.info("All users -> {}", personRepository.findAll());
 
 		Course course = courseRepository.findById(10001L);
 		logger.info("Course 10001 -> {}", course);
