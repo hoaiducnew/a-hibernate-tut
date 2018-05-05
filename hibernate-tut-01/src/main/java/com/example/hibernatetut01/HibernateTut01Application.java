@@ -41,5 +41,7 @@ public class HibernateTut01Application implements CommandLineRunner {
 		logger.info("Course 10001 -> {}", course);
 		
 //		courseRepository.deleteById(10001L);
+		
+		courseRepository.save(new Course("Microservices in 100 Steps"));
 	}
 }
