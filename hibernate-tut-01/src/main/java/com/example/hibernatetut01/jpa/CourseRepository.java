@@ -41,11 +41,12 @@ public class CourseRepository {
 		em.persist(course2);
 		
 		em.flush();
-		em.clear();
+//		em.clear();
 //		em.flush();
 //		em.detach(course2);
 		
 		course1.setName("Web Services in 100 Steps - Updated");
 		course2.setName("Angular in 100 Steps - Updated");
+		em.refresh(course1);
 	}
 }
