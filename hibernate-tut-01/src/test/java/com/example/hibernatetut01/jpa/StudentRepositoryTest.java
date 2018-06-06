@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.hibernatetut01.HibernateTut01Application;
+import com.example.hibernatetut01.entity.Passport;
 import com.example.hibernatetut01.entity.Student;
 
 @RunWith(SpringRunner.class)
@@ -33,6 +34,14 @@ public class StudentRepositoryTest {
 		logger.info("student -> {}", student);
 		logger.info("passport -> {}", student.getPassport());
 	}
+	
+	@Test
+	@Transactional
+	public void retrievePassportAndAssociatedStudent() {
+		Passport passport = em.find(Passport.class, 40001L);
+		logger.info("passport -> {}", passport);
+		logger.info("student -> {}", passport.getStudent());
+	}	
 
 	@Test
 	public void someTest() {
