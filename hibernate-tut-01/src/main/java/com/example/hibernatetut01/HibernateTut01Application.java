@@ -1,5 +1,7 @@
 package com.example.hibernatetut01;
 
+import java.math.BigDecimal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.hibernatetut01.entity.Course;
-import com.example.hibernatetut01.entity.Student;
+import com.example.hibernatetut01.entity.FullTimeEmployee;
+import com.example.hibernatetut01.entity.PartTimeEmployee;
 import com.example.hibernatetut01.jpa.CourseRepository;
+import com.example.hibernatetut01.jpa.EmployeeRepository;
 import com.example.hibernatetut01.jpa.PersonRepository;
 import com.example.hibernatetut01.jpa.StudentRepository;
 
@@ -26,6 +29,9 @@ public class HibernateTut01Application implements CommandLineRunner {
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HibernateTut01Application.class, args);
@@ -56,6 +62,14 @@ public class HibernateTut01Application implements CommandLineRunner {
 //		reviews.add(new Review("5", "Hatsoff."));
 //
 //		courseRepository.addReviewsForCourse(10003L, reviews);
-		studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
+		
+//		studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
+		
+		// Jack FullTimeEmployee salary - 10000$
+		// Jill PartTimeEmployee - 50$ per hour
+		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+
+		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
 	}
 }
