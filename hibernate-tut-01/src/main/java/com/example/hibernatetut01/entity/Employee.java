@@ -1,17 +1,16 @@
 package com.example.hibernatetut01.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
-@Entity
+//@Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // default
 //@DiscriminatorColumn(name = "EmployeeType")
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Employee {
 
 	@Id
